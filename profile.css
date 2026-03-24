@@ -1,0 +1,99 @@
+.profile-container {
+  max-width: 600px;
+  margin: 32px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-card {
+  background: linear-gradient(135deg, #4361ee, #3a0ca3);
+  color: white;
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: white;
+  color: #4361ee;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.profile-card h2 { font-size: 1.4rem; margin-bottom: 4px; }
+.profile-card p { opacity: 0.85; font-size: 0.9rem; }
+
+.edit-card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.edit-card h3 {
+  margin-bottom: 20px;
+  color: #1a1a2e;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.input-group label span {
+  font-weight: 400;
+  color: #999;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.input-group input:focus { border-color: #4361ee; }
+
+button {
+  width: 100%;
+  padding: 13px;
+  background: #4361ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover { background: #3451d1; }
+
+.error-msg { color: #e63946; font-size: 0.85rem; min-height: 18px; }
+.success-msg { color: #2dc653; font-size: 0.85rem; min-height: 18px; }
+
+nav a {
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+nav a:hover { color: white; }

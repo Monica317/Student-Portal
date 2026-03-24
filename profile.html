@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Portal — Profile</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+
+  <nav>
+    <h2>🎓 Student Portal</h2>
+    <div class="nav-right">
+      <a href="dashboard.html">Dashboard</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="profile-container">
+
+    <div class="profile-card">
+      <div class="avatar" id="avatarInitial"></div>
+      <h2 id="profileName"></h2>
+      <p id="profileEmail"></p>
+    </div>
+
+    <div class="edit-card">
+      <h3>Edit Profile</h3>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="editName" />
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="editEmail" />
+      </div>
+
+      <div class="input-group">
+        <label>New Password <span>(leave blank to keep current)</span></label>
+        <input type="password" id="editPassword" placeholder="New password" />
+      </div>
+
+      <p class="error-msg" id="errorMsg"></p>
+      <p class="success-msg" id="successMsg"></p>
+
+      <button onclick="saveProfile()">Save Changes</button>
+    </div>
+
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
