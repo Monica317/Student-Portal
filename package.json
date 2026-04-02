@@ -2,17 +2,7 @@
   "name": "student-portal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Monica317/Student-Portal.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "server.js",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Monica317/Student-Portal/issues"
@@ -20,5 +10,8 @@
   "homepage": "https://github.com/Monica317/Student-Portal#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
