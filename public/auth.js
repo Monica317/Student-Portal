@@ -1,39 +1,36 @@
 function handleLogin() {
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value.trim();
-  const errorMsg = document.getElementById('errorMsg');
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value.trim();
+  const errorMsg = document.getElementById("errorMsg");
+
+  errorMsg.textContent = "";
 
   if (!email || !password) {
     errorMsg.textContent = "Please fill in all fields.";
     return;
   }
 
-  fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      localStorage.setItem('loggedInUser', JSON.stringify(data.user));
-      window.location.href = 'dashboard.html';
-    } else {
-      errorMsg.textContent = data.message;
-    }
-  });
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if (user) {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    window.location.href = "dashboard.html";
+  } else {
+    errorMsg.textContent = "Invalid email or password.";
+  }
 }
 
 function handleRegister() {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value.trim();
-  const confirmPassword = document.getElementById('confirmPassword').value.trim();
-  const errorMsg = document.getElementById('errorMsg');
-  const successMsg = document.getElementById('successMsg');
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value.trim();
+  const confirmPassword = document.getElementById("confirmPassword").value.trim();
+  const errorMsg = document.getElementById("errorMsg");
+  const successMsg = document.getElementById("successMsg");
 
-  errorMsg.textContent = '';
-  successMsg.textContent = '';
+  errorMsg.textContent = "";
+  successMsg.textContent = "";
 
   if (!name || !email || !password || !confirmPassword) {
     errorMsg.textContent = "Please fill in all fields.";
@@ -50,20 +47,19 @@ function handleRegister() {
     return;
   }
 
-  fetch('/api/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, password })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      successMsg.textContent = "Account created! Redirecting...";
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 2000);
-    } else {
-      errorMsg.textContent = data.message;
-    }
-  });
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const exists = users.some(u => u.email === email);
+
+  if (exists) {
+    errorMsg.textContent = "An account with this email already exists.";
+    return;
+  }
+
+  users.push({ name, email, password });
+  localStorage.setItem("users", JSON.stringify(users));
+
+  successMsg.textContent = "Account created successfully!";
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 2000);
 }
